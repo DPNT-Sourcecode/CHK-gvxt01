@@ -21,6 +21,3 @@ class TestCheckout():
     def test_checkoutInA(self):
         
 
-
-
-
