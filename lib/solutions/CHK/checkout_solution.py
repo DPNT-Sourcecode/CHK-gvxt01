@@ -46,7 +46,10 @@ Where:
     before calculating check all the input values are in the price list
 """
 def checkout(skus):
-    assert isinstance(skus, str), 'skus must be of type string'
+    if not isinstance(skus, str):
+        return -1
+    
+    ?
 
     priceDict = {
         'A' : 50,
@@ -55,10 +58,16 @@ def checkout(skus):
         'D' : 15
     }
 
-    # Special buys
+    # Special buys. dict val is a tuple with the number and the value
+
+    specialDict = {
+        'A' : (3, 130),
+        'B' : (2, 45)
+    }
 
 
 
     pass
+
 
 
