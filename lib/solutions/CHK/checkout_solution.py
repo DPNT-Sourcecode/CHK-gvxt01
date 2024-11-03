@@ -96,7 +96,3 @@ def checkout(skus):
 
 test = checkout('AbC')
 print(test)
-
-
-
-
