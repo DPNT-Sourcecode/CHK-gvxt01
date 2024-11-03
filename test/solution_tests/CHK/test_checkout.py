@@ -15,8 +15,9 @@ class TestCheckout():
     def test_checkoutWithTwoMulti(self):
         assert checkout_solution.checkout('AAAAAAAA') == 330
 
-    def checkoutWithCombo(self):
+    def test_checkoutWithCombo(self):
         assert checkout_solution.checkout('ABEEAAAAAAA') == 410
+
 
 
 
