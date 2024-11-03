@@ -87,7 +87,7 @@ def checkout(skus):
         'H' : [(10, 80), (5, 45)],
         'K' : [(2, 150)],
         'P' : [(5, 200)],
-        'Q' : [(3, 180)],
+        'Q' : [(3, 80)],
         'V' : [(3, 130), (2, 90)]
     }
 
@@ -197,6 +197,7 @@ def checkout(skus):
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
