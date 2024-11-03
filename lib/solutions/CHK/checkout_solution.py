@@ -77,14 +77,16 @@ def checkout(skus):
     resultsFreqs = Counter(units)
     total = 0
     for item in resultsFreqs.keys():
-        specialExists =  specialDict.get(item, None) == None
+        specialExists =  specialDict.get(item, None) != None
         if not specialExists:
             total += resultsFreqs[item] * priceDict[item]
         else:
             inDeal = resultsFreqs[item] // specialDict[item][0]
             extra = resultsFreqs[item] % specialDict[item][0]
 
-            total += inDeal * specialDict[item][1] + extra 
+            total += inDeal * specialDict[item][1] + extra * priceDict[item]
+
+    return total
 
 
 
