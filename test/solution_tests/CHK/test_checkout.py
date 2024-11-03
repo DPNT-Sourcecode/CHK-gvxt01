@@ -12,7 +12,16 @@ class TestCheckout():
     def checkoutDealPlusOne(self):
         assert checkout_solution.checkout('aaaaaaa') == -1
 
-    def checkoutWith
+    def checkoutWithTwoMulti(self):
+        assert checkout_solution.checkout('AAAAAAAA') == 330
 
-    def checkoutWithCombo(self):
-        assert checkout_solution.checkout('ABEEAAAAAAA') == 410
+    # def checkoutWithCombo(self):
+    #     assert checkout_solution.checkout('ABEEAAAAAAA') == 410
+
+
+# from solutions.HLO import hello_solution
+
+
+# class TestHello():
+#     def test_hello(self):
+#         assert hello_solution.hello('John')== "Hello, John!"

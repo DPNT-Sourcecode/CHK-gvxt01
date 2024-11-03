@@ -98,7 +98,7 @@ def checkout(skus):
 
                 deal_counter += 1
 
-            total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
+            # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
 
