@@ -37,10 +37,28 @@ Where:
 
 # noinspection PyUnusedLocal
 # skus = unicode string
+
+"""
+    so I can use a dictionary to store the prices next to the item names 
+
+    then I can use a counter to store the values in the input string 
+
+    before calculating check all the input values are in the price list
+"""
 def checkout(skus):
     assert isinstance(skus, str), 'skus must be of type string'
 
-    
+    priceDict = {
+        'A' : 50,
+        'B' : 30,
+        'C' : 20,
+        'D' : 15
+    }
+
+    # Special buys
+
+
 
     pass
+
 
