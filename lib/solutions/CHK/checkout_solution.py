@@ -95,6 +95,7 @@ def checkout(skus):
                 else:
                     rest = unitCounter[item] * priceDict[item]
                     total += rest
+                    outOfOffers = True
 
                 deal_counter += 1
 
@@ -108,3 +109,4 @@ def checkout(skus):
 
 test = checkout('AbC')
 print(test)
+
