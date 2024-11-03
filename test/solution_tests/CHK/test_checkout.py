@@ -19,5 +19,3 @@ class TestCheckout():
     #     assert checkout_solution.checkout('ABEEAAAAAAA') == 410
 
 
-
-
