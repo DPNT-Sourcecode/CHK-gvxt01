@@ -68,7 +68,7 @@ def checkout(skus):
 
     specialDict = {
         'B': {
-            'amount': -1,
+            'amount': 1,
             'combo': Counter('EE')
         }
     }
@@ -91,10 +91,12 @@ def checkout(skus):
     for item in basket.keys():
         specialBuyExists = specialDict.get(item, None) != None
         if specialBuyExists:
-            comboNeeded = specialDict[item][combo]
+            specialDeal = specialDict[item]
+            comboNeeded = specialDeal['combo']
             comboExists = basket >= comboNeeded
             if comboExists:
-                
+                while comboExists:
+                    basket.subtract(specialDeal)
 
 
 
@@ -126,6 +128,7 @@ def checkout(skus):
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
