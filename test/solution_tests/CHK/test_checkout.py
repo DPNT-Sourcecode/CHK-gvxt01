@@ -1,5 +1,4 @@
-from solutions.CHK import checkout_solution
-
+from solutions.CHK import 
 
 class TestCheckout():
     def checkoutNormal(self):
@@ -19,9 +18,3 @@ class TestCheckout():
     #     assert checkout_solution.checkout('ABEEAAAAAAA') == 410
 
 
-# from solutions.HLO import hello_solution
-
-
-# class TestHello():
-#     def test_hello(self):
-#         assert hello_solution.hello('John')== "Hello, John!"
