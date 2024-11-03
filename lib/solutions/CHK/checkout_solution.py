@@ -84,20 +84,36 @@ def checkout(skus):
     multiBuyDict = {
         'A' : [(5, 200), (3, 130)],
         'B' : [(2, 45)],
-        'H'
+        'H' : [(10, 80), (5, 45)],
+        'K' : [(2, 150)],
+        'P' : [(5, 200)],
+        'Q' : [(3, 180)],
+        'V' : [(3, 130), (2, 90)]
     }
 
     specialDict = {
         'B': {
             'amount': 1,
             'combo': Counter('EE')
-        }
+        },
+        'M': {
+            'amount': 1,
+            'combo': Counter('NNN')
+        },
+        'Q': {
+            'amount': 1,
+            'combo': Counter('RRR')
+        },
     }
 
     bogofDict = {
         'F': {
             'amount': 1,
             'combo': Counter('FFF')
+        },
+        'U': {
+            'amount': 1,
+            'combo': Counter('UUUU')
         }
     }
 
@@ -181,6 +197,7 @@ def checkout(skus):
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
