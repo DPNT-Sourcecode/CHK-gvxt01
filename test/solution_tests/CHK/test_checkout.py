@@ -20,5 +20,12 @@ class TestCheckout():
         assert checkout_solution.checkout('ABEEAAAAAAA') == 410
         assert checkout_solution.checkout('ABEEAAAAAAAEEB') == 490
         assert checkout_solution.checkout('EEBEEB') == 160
+
+    def test_checkoutWithBogof(self):
+        assert checkout_solution.checkout('FFFABCDE') == 175
+        assert checkout_solution.checkout('FFFABCDEFFF') == 195
+        assert checkout_solution.checkout('EEBEEBAAAAFFF') == 360
+
         
+
 
