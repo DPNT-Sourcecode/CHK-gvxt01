@@ -80,6 +80,11 @@ def checkout(skus):
         specialExists =  specialDict.get(item, None) == None
         if not specialExists:
             total += resultsFreqs[item] * priceDict[item]
+        else:
+            inDeal = resultsFreqs[item] // specialDict[item][0]
+            extra = resultsFreqs[item] % specialDict[item][0]
+
+            total += inDeal * specialDict[item][1] + extra 
 
 
 
@@ -87,4 +92,5 @@ def checkout(skus):
 
 test = checkout('AbC')
 print(test)
+
 
