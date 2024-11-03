@@ -106,7 +106,7 @@ def checkout(skus):
             total += basket[item] * priceDict[item]
         else:
             deal_counter = 0
-            while basket[item] > 0:
+            while basket[item] > 0 and deal_counter < len(multiBuyDict[item]):
                 print(f'Deal counter: {deal_counter} and item: {item}')
                 print(f'basket has {basket[item]} left of {item}')
                 print(basket)
@@ -124,10 +124,13 @@ def checkout(skus):
                     break
 
                 deal_counter += 1
+            if basket[item] > 0:
+                total += basket[item] * priceDict[item]
 
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
