@@ -3,5 +3,5 @@
 # noinspection PyUnusedLocal
 # friend_name = unicode string
 def hello(friend_name):
-
-    return 'Hello, World!'
+    assert isinstance(friend_name, str), "Friend name must be a string"
+    return 'Hello, ' + friend_name + '!'
