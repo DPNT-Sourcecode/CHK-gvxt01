@@ -5,5 +5,3 @@ def compute(x, y):
     assert y >= 0 and y <= 100, "y must be between 0 and 100"
 
     return x + y
-
-
