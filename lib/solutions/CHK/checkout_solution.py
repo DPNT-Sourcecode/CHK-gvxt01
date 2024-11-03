@@ -84,9 +84,9 @@ def checkout(skus):
         if not multiBuyExists:
             total += basket[item] * priceDict[item]
         else:
-            outOfOffers = False
             deal_counter = 0
-            while not outOfOffers:
+            while basket[item] > 0:
+                print(f'')
                 deal = multiBuyDict[item][deal_counter]
                 inDeal = basket[item] // deal[0]
                 if inDeal > 0:
@@ -95,7 +95,6 @@ def checkout(skus):
                 else:
                     rest = basket[item] * priceDict[item]
                     total += rest
-                    outOfOffers = True
 
                 deal_counter += 1
 
@@ -109,3 +108,4 @@ def checkout(skus):
 
 test = checkout('AbC')
 print(test)
+
