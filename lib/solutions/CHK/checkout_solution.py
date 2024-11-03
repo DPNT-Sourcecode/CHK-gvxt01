@@ -107,7 +107,20 @@ def checkout(skus):
         if bogofExists:
             bogofDeal = bogofDict[item]
             bogofComboNeeded = bogofDeal['combo']
-            bogo = basket >= comboNeeded
+            bogofComboExists = basket >= bogofComboNeeded
+
+            testBasket = deepcopy(basket)
+
+            while bogofComboExists:
+                basket.subtract({item: bogofDeal['amount']})
+                testBasket.subtract(bogofComboNeeded)
+                bogofComboExists = testBasket >= bogofComboNeeded
+
+        specialBuyExists = specialDict.get(item, None) != None
+        if specialBuyExists:
+            specialDeal = specialDict[item]
+            comboNeeded = specialDeal['combo']
+            comboExists = basket >= comboNeeded
 
             testBasket = deepcopy(basket)
 
@@ -147,6 +160,7 @@ def checkout(skus):
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
