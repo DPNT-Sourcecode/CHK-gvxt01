@@ -49,7 +49,7 @@ def checkout(skus):
     if not isinstance(skus, str):
         return -1
     
-    ?
+    # Not known whether the input is a list of capital letters, comma separated or just one word so separation will be needed to handle both
 
     priceDict = {
         'A' : 50,
@@ -65,9 +65,14 @@ def checkout(skus):
         'B' : (2, 45)
     }
 
+    if ',' in skus:
+        units = [unit.upper() for unit in skus.split(',')]
+        return units
+
 
 
     pass
+
 
 
 
