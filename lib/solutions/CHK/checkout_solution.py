@@ -72,9 +72,18 @@ def checkout(skus):
             'combo': Counter('EE')
         }
     }
+
+    bogofDict = {
+        'F': {
+            'amount': 1,
+            'combo': Counter('FFF')
+        }
+    }
+
+
     # Need another dict for the Buy x get one free deals or BOGOF. it can work like the specialbuys too
 
-    
+
 
     if ',' in skus:
         units = skus.split(',')
@@ -92,11 +101,13 @@ def checkout(skus):
 
 
     for item in basket.keys():
-        specialBuyExists = specialDict.get(item, None) != None
-        if specialBuyExists:
-            specialDeal = specialDict[item]
-            comboNeeded = specialDeal['combo']
-            comboExists = basket >= comboNeeded
+
+
+        bogofExists = bogofDict.get(item, None) != None
+        if bogofExists:
+            bogofDeal = bogofDict[item]
+            bogofComboNeeded = bogofDeal['combo']
+            bogo = basket >= comboNeeded
 
             testBasket = deepcopy(basket)
 
@@ -105,7 +116,7 @@ def checkout(skus):
                 testBasket.subtract(comboNeeded)
                 comboExists = testBasket >= comboNeeded
 
-
+        
 
 
         multiBuyExists =  multiBuyDict.get(item, None) != None
@@ -136,6 +147,7 @@ def checkout(skus):
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
