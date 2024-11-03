@@ -67,8 +67,10 @@ def checkout(skus):
 
     if ',' in skus:
         units = [unit.upper() for unit in skus.split(',')]
-        return units
+    else:
+        # This is for the case where the input is a series of letters in a word
+        units = list()
 
 
-
-    pass
+test = checkout('A,b,C')
+print(test)
