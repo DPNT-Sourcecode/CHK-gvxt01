@@ -118,20 +118,18 @@ def checkout(skus):
                     basket.subtract(Counter({item: inDeal * deal[0]}))
                     total += inDeal * deal[1]
                     print(basket)
-                else:
-                    rest = basket[item] * priceDict[item]
-                    total += rest
-                    basket.subtract(Counter({item: basket[item]}))
-                    break
 
                 deal_counter += 1
             if basket[item] > 0:
-                total += basket[item] * priceDict[item]
+                    rest = basket[item] * priceDict[item]
+                    total += rest
+                    basket.subtract(Counter({item: basket[item]}))
         print(f'Current total for item :{item} is {total}')
 
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 

@@ -18,5 +18,8 @@ class TestCheckout():
     def test_checkoutWithCombo(self):
         assert checkout_solution.checkout('ABEEAAAAAAA') == 410
 
+    def test_checkoutInA(self):
+        assert checkout_solution.checkout('AAA') == 
+
 
 
