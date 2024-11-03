@@ -34,7 +34,7 @@ Where:
  - @return = an Integer representing the total checkout value of the items 
 
 """
-
+from collections import Counter
 # noinspection PyUnusedLocal
 # skus = unicode string
 
@@ -74,11 +74,17 @@ def checkout(skus):
     if len(set(units).difference(set(priceDict.keys()))) > 0:
         return -1
     
-    results = {}
-    
+    resultsFreqs = Counter(units)
+    total = 0
+    for item in resultsFreqs.keys():
+        specialExists =  specialDict.get(item, None) == None
+        if not specialExists:
+            total += resultsFreqs[item] * priceDict[item]
+
 
 
 
 
 test = checkout('AbC')
 print(test)
+
