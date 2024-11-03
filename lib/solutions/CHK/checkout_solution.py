@@ -89,6 +89,16 @@ def checkout(skus):
 
 
     for item in basket.keys():
+        specialBuyExists = specialDict.get(item, None) != None
+        if specialBuyExists:
+            comboNeeded = specialDict[item][combo]
+            comboExists = basket >= comboNeeded
+            if comboExists:
+                
+
+
+
+
         multiBuyExists =  multiBuyDict.get(item, None) != None
         if not multiBuyExists:
             total += basket[item] * priceDict[item]
@@ -116,6 +126,7 @@ def checkout(skus):
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
