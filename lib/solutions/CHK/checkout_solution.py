@@ -60,9 +60,9 @@ def checkout(skus):
         'E' : 40
     }
 
-    specialDict = {
-        'A' : (3, 130),
-        'B' : (2, 45)
+    multiBuyDict = {
+        'A' : [(5, 200), (3, 130)],
+        'B' : [(2, 45)]
     }
 
     if ',' in skus:
@@ -77,16 +77,17 @@ def checkout(skus):
     resultsFreqs = Counter(units)
     total = 0
 
-    # So no there are combo offers 
+    # So no there are combo offers and multiple offers
+    # To support this I'll make a combo structure and put the multi buys as a list of tuples
     for item in resultsFreqs.keys():
-        specialExists =  specialDict.get(item, None) != None
+        specialExists =  multiBuyDict.get(item, None) != None
         if not specialExists:
             total += resultsFreqs[item] * priceDict[item]
         else:
-            inDeal = resultsFreqs[item] // specialDict[item][0]
-            extra = resultsFreqs[item] % specialDict[item][0]
+            inDeal = resultsFreqs[item] // multiBuyDict[item][0]
+            extra = resultsFreqs[item] % multiBuyDict[item][0]
 
-            total += inDeal * specialDict[item][1] + extra * priceDict[item]
+            total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
 
