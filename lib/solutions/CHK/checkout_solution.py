@@ -87,9 +87,11 @@ def checkout(skus):
             outOfOffers = False
             deal_counter = 0
             while not outOfOffers:
-                inDeal = unitCounter[item] // multiBuyDict[item][deal_counter][0]
-                unitCounter -= Counter(item: inDeal)
-                extra = unitCounter[item] % multiBuyDict[item][0]
+                deal = multiBuyDict[item][deal_counter]
+                inDeal = unitCounter[item] // deal0]
+                unitCounter -= Counter(item =inDeal)
+                total += inDeal * deal[1]
+                deal_counter += 1
 
             total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
@@ -101,4 +103,5 @@ def checkout(skus):
 
 test = checkout('AbC')
 print(test)
+
 
