@@ -14,10 +14,12 @@ class TestCheckout():
 
     def test_checkoutWithTwoMulti(self):
         assert checkout_solution.checkout('AAAAAAAAA') == 380
+        assert checkout_solution.checkout('AAAA') == 180
 
     def test_checkoutWithCombo(self):
         assert checkout_solution.checkout('ABEEAAAAAAA') == 410
-
-    def test_checkoutInA(self):
+        assert checkout_solution.checkout('ABEEAAAAAAAEEB') == 490
+        assert checkout_solution.checkout('EEBEEB') == 160
         
+
 
