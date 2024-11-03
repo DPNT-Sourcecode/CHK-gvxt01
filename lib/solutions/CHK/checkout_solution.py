@@ -66,10 +66,10 @@ def checkout(skus):
     }
 
     if ',' in skus:
-        units = [unit.upper() for unit in skus.split(',')]
+        units = skus.split(',')
     else:
         # This is for the case where the input is a series of letters in a word
-        units = list([unit.upper() for unit in list(skus)])
+        units = list(skus)
 
     if len(set(units).difference(set(priceDict.keys()))) > 0:
         return -1
@@ -94,5 +94,6 @@ def checkout(skus):
 
 test = checkout('AbC')
 print(test)
+
 
 
