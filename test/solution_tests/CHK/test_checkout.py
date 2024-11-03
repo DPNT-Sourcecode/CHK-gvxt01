@@ -26,5 +26,9 @@ class TestCheckout():
         assert checkout_solution.checkout('FFFABCDEFFF') == 195
         assert checkout_solution.checkout('EEBEEBAAAAFFF') == 360
 
+    def test_checkoutLargeStore(self):
+        assert checkout_solution.checkout('RRRQQQQHHHHHKVV') == 445
+
         
+
 
