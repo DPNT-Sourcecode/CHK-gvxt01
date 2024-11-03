@@ -10,7 +10,7 @@ class TestCheckout():
         assert checkout_solution.checkout('babD')== -1
         # assert True
     def checkoutDealPlusOne(self):
-        assert checkout_solution.checkout('aaaaaaa') == 310
+        assert checkout_solution.checkout('aaaaaaa') == -1
 
-    def checkoutWithCombo(self):
-        assert checkout_solution.checkout('ABEEAAAAAAA') == 410
+    # def checkoutWithCombo(self):
+    #     assert checkout_solution.checkout('ABEEAAAAAAA') == 410

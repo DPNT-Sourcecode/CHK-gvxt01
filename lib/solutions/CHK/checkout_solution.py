@@ -80,17 +80,22 @@ def checkout(skus):
     # So no there are combo offers and multiple offers
     # To support this I'll make a combo structure and put the multi buys as a list of tuples
     for item in unitCounter.keys():
-        specialExists =  multiBuyDict.get(item, None) != None
-        if not specialExists:
+        multiBuyExists =  multiBuyDict.get(item, None) != None
+        if not multiBuyExists:
             total += unitCounter[item] * priceDict[item]
         else:
             outOfOffers = False
             deal_counter = 0
             while not outOfOffers:
                 deal = multiBuyDict[item][deal_counter]
-                inDeal = unitCounter[item] // deal0]
-                unitCounter -= Counter(item =inDeal)
-                total += inDeal * deal[1]
+                inDeal = unitCounter[item] // deal[0]
+                if inDeal > 0:
+                    unitCounter -= Counter(item =inDeal)
+                    total += inDeal * deal[1]
+                else:
+                    rest = unitCounter[item] * priceDict[item]
+                    total += rest
+
                 deal_counter += 1
 
             total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
