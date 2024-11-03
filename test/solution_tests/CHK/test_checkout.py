@@ -22,4 +22,3 @@ class TestCheckout():
         assert checkout_solution.checkout('EEBEEB') == 160
         
 
-
