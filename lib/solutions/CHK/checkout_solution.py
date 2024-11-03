@@ -72,7 +72,3 @@ def checkout(skus):
 
 
     pass
-
-
-
-
