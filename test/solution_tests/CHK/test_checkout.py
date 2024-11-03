@@ -19,7 +19,8 @@ class TestCheckout():
         assert checkout_solution.checkout('ABEEAAAAAAA') == 410
 
     def test_checkoutInA(self):
-        assert checkout_solution.checkout('AAA') == 
+        
+
 
 
 
