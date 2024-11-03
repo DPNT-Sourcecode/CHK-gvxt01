@@ -66,6 +66,13 @@ def checkout(skus):
         'B' : [(2, 45)]
     }
 
+    specialDict = {
+        'B': {
+            'amount': -1,
+            'combo': Counter('EE')
+        }
+    }
+
     if ',' in skus:
         units = skus.split(',')
     else:
@@ -77,9 +84,10 @@ def checkout(skus):
     
     basket = Counter(units)
     total = 0
-    basketToEdit = deepcopy(basket)
-    # So no there are combo offers and multiple offers
-    # To support this I'll make a combo structure and put the multi buys as a list of tuples
+
+
+
+
     for item in basket.keys():
         multiBuyExists =  multiBuyDict.get(item, None) != None
         if not multiBuyExists:
@@ -87,26 +95,28 @@ def checkout(skus):
         else:
             deal_counter = 0
             while basket[item] > 0:
-                print(f'Deal counter: {deal_counter} and item: {item}')
-                print(f'basket has {basket[item]} left of {item}')
-                print(basket)
+                # print(f'Deal counter: {deal_counter} and item: {item}')
+                # print(f'basket has {basket[item]} left of {item}')
+                # print(basket)
                 deal = multiBuyDict[item][deal_counter]
                 inDeal = basket[item] // deal[0]
                 if inDeal > 0:
-                    print('in deal')
-                    print(f'subtracting: {inDeal * deal[0]}')
+                    # print('in deal')
+                    # print(f'subtracting: {inDeal * deal[0]}')
                     basket.subtract(Counter({item: inDeal * deal[0]}))
                     total += inDeal * deal[1]
-                    print(basket)
+                    # print(basket)
                 else:
                     rest = basket[item] * priceDict[item]
                     total += rest
+                    break
 
                 deal_counter += 1
 
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
