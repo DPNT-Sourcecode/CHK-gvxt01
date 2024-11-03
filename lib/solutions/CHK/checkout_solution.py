@@ -1,4 +1,5 @@
 from collections import Counter
+from copy import deepcopy
 # noinspection PyUnusedLocal
 # skus = unicode string
 
@@ -76,7 +77,7 @@ def checkout(skus):
     
     basket = Counter(units)
     total = 0
-
+    basketToEdit = deepcopy(basket)
     # So no there are combo offers and multiple offers
     # To support this I'll make a combo structure and put the multi buys as a list of tuples
     for item in basket.keys():
@@ -95,7 +96,6 @@ def checkout(skus):
                     print('in deal')
                     basket = basket.subtract(Counter(item= inDeal * deal[0]))
                     total += inDeal * deal[1]
-                    
                 else:
                     rest = basket[item] * priceDict[item]
                     total += rest
@@ -105,6 +105,7 @@ def checkout(skus):
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
