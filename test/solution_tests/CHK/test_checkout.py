@@ -31,7 +31,12 @@ class TestCheckout():
     def test_checkoutLargeStore(self):
         assert checkout_solution.checkout('RRRQQQQHHHHHKVV') == 435
 
+    def test_checoutGroupBuy(self):
+        assert checkout_solution.checkout('STXYZSTXYZY') == 124
+        assert checkout_solution.checkout('NNNMMFFFBEESTXYZ') == 317
         
+
+
     def test_applyOffer(self):
         assert checkout_solution.applyOffer(
             offerDict={
@@ -61,6 +66,7 @@ class TestCheckout():
             shopping=Counter('FFFDGG'),
             item='G'
         ) == Counter('FFFD')
+
 
 
 

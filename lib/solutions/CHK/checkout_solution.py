@@ -188,18 +188,19 @@ def checkout(skus):
             groupDeal = groupBuyDeal[0]
             print(groupDeal)
             groupDealCombo = groupDeal['combo']
-            diff = deepcopy(groupDealCombo)
-            diff.subtract(basket)
-            print(f'Diff is {diff.total()}')
-            groupDealComboExists = diff.total() <= groupDealCombo.total() - groupDeal['amount']
+            # diff = deepcopy(groupDealCombo)
+            # diff.subtract(basket)
+            # print(f'Diff is {diff.total()}')
+            # groupDealComboExists = diff.total() <= groupDealCombo.total() - groupDeal['amount']
+            groupDealComboExists = sum(basket[item] for item in )
 
             while groupDealComboExists:
                 basket.subtract(groupDealCombo)
                 total += groupDeal['amount']
-                diff = deepcopy(groupDealCombo)
-                diff.subtract(basket)
-                print(f'Diff is {diff.total()}')
-                groupDealComboExists = diff.total() <= groupDealCombo.total() - groupDeal['amount']
+                # diff = deepcopy(groupDealCombo)
+                # diff.subtract(basket)
+                # print(f'Diff is {diff.total()}')
+                # groupDealComboExists = diff.total() <= groupDealCombo.total() - groupDeal['amount']
 
 
         bogofExists = bogofDict.get(item, None) != None
@@ -241,6 +242,7 @@ def checkout(skus):
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
