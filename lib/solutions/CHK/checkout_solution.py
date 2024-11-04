@@ -48,7 +48,19 @@ Where:
 
 def applyOffer(offerDict: dict, shopping: Counter, item: str)->Counter:
     # THis is a function to update the counter based on special deals and bogofs
-    return Counter()
+    deal = offerDict[item]
+    comboNeeded = deal['combo']
+    comboExists = shopping >= comboNeeded
+
+    copyShopping = deepcopy(shopping)
+
+    while comboExists:
+        shopping.subtract({item: deal['amount']})
+        copyShopping.subtract(comboNeeded)
+        comboExists = copyShopping >= comboNeeded
+
+
+    return shopping
 
 def checkout(skus):
     if not isinstance(skus, str):
@@ -199,6 +211,7 @@ def checkout(skus):
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
