@@ -155,12 +155,14 @@ def checkout(skus):
     # Need another dict for the Buy x get one free deals or BOGOF. it can work like the specialbuys too
 
     # Need a groupby dict to handle the group and the amount you need
+    # THis dit needs to store the items in descending order because you want to apply the deal in such a way to get the min price
 
     groupBuyDict = {
         'STXYZ' : {
             'combo': Counter('STXYZ'),
             'amount': 3,
-            'price' : 45
+            'price' : 45,
+            'order' : ['Z', 'S', 'T', 'Y', 'X']
         }
     }
 
@@ -188,15 +190,14 @@ def checkout(skus):
             groupDeal = groupBuyDeal[0]
             print(groupDeal)
             groupDealCombo = groupDeal['combo']
-            # diff = deepcopy(groupDealCombo)
-            # diff.subtract(basket)
-            # print(f'Diff is {diff.total()}')
-            # groupDealComboExists = diff.total() <= groupDealCombo.total() - groupDeal['amount']
-            groupDealComboExists = sum(basket[item] for item in )
+            groupDealComboExists = sum(basket[item] for item in groupDealCombo.keys()) > groupDeal['amount']
 
             while groupDealComboExists:
-                basket.subtract(groupDealCombo)
-                total += groupDeal['amount']
+                print(f'Applying deal {groupDealCombo}')
+                total += groupDeal['price']
+                deductedItems
+                # basket.subtract(groupDealCombo)
+                # total += groupDeal['amount']
                 # diff = deepcopy(groupDealCombo)
                 # diff.subtract(basket)
                 # print(f'Diff is {diff.total()}')
@@ -242,6 +243,7 @@ def checkout(skus):
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
