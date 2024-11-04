@@ -1,3 +1,5 @@
+from collections import Counter
+
 from solutions.CHK import checkout_solution
 
 class TestCheckout():
@@ -30,4 +32,19 @@ class TestCheckout():
         assert checkout_solution.checkout('RRRQQQQHHHHHKVV') == 445
 
         
+    def test_applyOffer(self):
+        assert checkout_solution.applyOffer(
+            offerDict={
+                'F': {
+                    'amount': 2,
+                    'combo': Counter('FFF')
+                },
+                'U': {
+                    'amount': 1,
+                    'combo': Counter('UUUU')
+                },
+            },
+            shopping=Counter('FFFDGG')
+            item='G'
+        ) 
 
