@@ -206,13 +206,13 @@ def checkout(skus):
                     if basket[item_to_remove] > 0:
                         numRemoved = min(basket[item_to_remove], groupDeal['amount'])
                         itemsRemoved += numRemoved
-                        print(f'As part of deal {group}')
-                # basket.subtract(groupDealCombo)
-                # total += groupDeal['amount']
-                # diff = deepcopy(groupDealCombo)
-                # diff.subtract(basket)
-                # print(f'Diff is {diff.total()}')
-                # groupDealComboExists = diff.total() <= groupDealCombo.total() - groupDeal['amount']
+                        print(f'As part of deal {groupDealCombo}, {numRemoved} of {item_to_remove} were removed from {basket}')
+                        basket.subtract({deductedItems[deductedItemsIndex]: numRemoved})
+                    deductedItemsIndex += 1
+
+                    
+                print(f'Added val of {groupDeal['price']} for group deal: {groupDealCombo} basket now: {basket}')
+                groupDealComboExists = sum(basket[item] for item in groupDealCombo.keys()) > groupDeal['amount']
 
 
         bogofExists = bogofDict.get(item, None) != None
@@ -254,6 +254,7 @@ def checkout(skus):
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
