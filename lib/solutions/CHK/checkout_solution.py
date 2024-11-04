@@ -154,7 +154,13 @@ def checkout(skus):
 
     # Need another dict for the Buy x get one free deals or BOGOF. it can work like the specialbuys too
 
+    # Need a groupby dict to handle the group and the amount you need
 
+    groupBuyDict = {
+        'STXYZ' : {
+            
+        }
+    }
 
     if ',' in skus:
         units = skus.split(',')
@@ -176,29 +182,11 @@ def checkout(skus):
 
         bogofExists = bogofDict.get(item, None) != None
         if bogofExists:
-            bogofDeal = bogofDict[item]
-            bogofComboNeeded = bogofDeal['combo']
-            bogofComboExists = basket >= bogofComboNeeded
-
-            testBasket = deepcopy(basket)
-
-            while bogofComboExists:
-                basket.subtract({item: bogofDeal['amount']})
-                testBasket.subtract(bogofComboNeeded)
-                bogofComboExists = testBasket >= bogofComboNeeded
+            basket = applyOffer(offerDict=bogofDict, shopping=basket, item=item)
 
         specialBuyExists = specialDict.get(item, None) != None
         if specialBuyExists:
-            specialDeal = specialDict[item]
-            comboNeeded = specialDeal['combo']
-            comboExists = basket >= comboNeeded
-
-            testBasket = deepcopy(basket)
-
-            while comboExists:
-                basket.subtract({item: specialDeal['amount']})
-                testBasket.subtract(comboNeeded)
-                comboExists = testBasket >= comboNeeded
+            basket = applyOffer(offerDict=specialDict, shopping=basket, item=item)
 
         
 
@@ -231,6 +219,7 @@ def checkout(skus):
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
