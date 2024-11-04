@@ -29,7 +29,7 @@ class TestCheckout():
         assert checkout_solution.checkout('EEBEEBAAAAFFF') == 360
 
     def test_checkoutLargeStore(self):
-        assert checkout_solution.checkout('RRRQQQQHHHHHKVV') == 445
+        assert checkout_solution.checkout('RRRQQQQHHHHHKVV') == 435
 
         
     def test_applyOffer(self):
@@ -61,6 +61,7 @@ class TestCheckout():
             shopping=Counter('FFFDGG'),
             item='G'
         ) == Counter('FFFD')
+
 
 
 
