@@ -32,8 +32,11 @@ class TestCheckout():
         assert checkout_solution.checkout('RRRQQQQHHHHHKVV') == 435
 
     def test_checoutGroupBuy(self):
-        assert checkout_solution.checkout('STXYZSTXYZY') == 124
+        assert checkout_solution.checkout('STXYZSTXYZY') == 169
         assert checkout_solution.checkout('NNNMMFFFBEESTXYZ') == 317
+        assert checkout_solution.checkout('STZ') == 45
+        assert checkout_solution.checkout('STXSTX') == 90
+        assert checkout_solution.checkout('SSS') == 45
         
 
 
@@ -66,4 +69,5 @@ class TestCheckout():
             shopping=Counter('FFFDGG'),
             item='G'
         ) == Counter('FFFD')
+
 

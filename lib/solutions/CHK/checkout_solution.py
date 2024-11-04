@@ -188,7 +188,7 @@ def checkout(skus):
             groupDeal = groupBuyDeal[0]
             print(groupDeal)
             groupDealCombo = groupDeal['combo']
-            groupDealComboExists = sum(basket[item] for item in groupDealCombo.keys()) > groupDeal['amount']
+            groupDealComboExists = sum(basket[item] for item in groupDealCombo.keys()) >= groupDeal['amount']
 
             while groupDealComboExists:
                 print(f'Applying deal {groupDealCombo}')
@@ -202,7 +202,7 @@ def checkout(skus):
                     item_to_remove = deductedItems[deductedItemsIndex]
                     print(f'item to remove of deal: {groupDealCombo} is {item_to_remove} from basket: {basket}')
                     if basket[item_to_remove] > 0:
-                        numRemoved = min(basket[item_to_remove], groupDeal['amount'])
+                        numRemoved = min(basket[item_to_remove], groupDeal['amount']- itemsRemoved)
                         itemsRemoved += numRemoved
                         print(f'As part of deal {groupDealCombo}, {numRemoved} of {item_to_remove} were removed from {basket}')
                         basket.subtract({deductedItems[deductedItemsIndex]: numRemoved})
@@ -252,6 +252,7 @@ def checkout(skus):
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
