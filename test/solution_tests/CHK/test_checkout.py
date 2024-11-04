@@ -36,7 +36,7 @@ class TestCheckout():
         assert checkout_solution.applyOffer(
             offerDict={
                 'F': {
-                    'amount': 2,
+                    'amount': 1,
                     'combo': Counter('FFF')
                 },
                 'U': {
@@ -44,7 +44,23 @@ class TestCheckout():
                     'combo': Counter('UUUU')
                 },
             },
-            shopping=Counter('FFFDGG')
+            shopping=Counter('FFFD'),
+            item='F'
+        ) == Counter('FFD')
+        assert checkout_solution.applyOffer(
+            offerDict={
+                'G': {
+                    'amount': 2,
+                    'combo': Counter('FFF')
+                },
+                'T': {
+                    'amount': 1,
+                    'combo': Counter('UUUU')
+                },
+            },
+            shopping=Counter('FFFDGG'),
             item='G'
-        ) 
+        ) == Counter('FFFD')
+
+
 

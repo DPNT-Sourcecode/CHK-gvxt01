@@ -46,7 +46,9 @@ Where:
  - @return = an Integer representing the total checkout value of the items 
 """
 
-
+def applyOffer(offerDict: dict, shopping: Counter, item: str)->Counter:
+    # THis is a function to update the counter based on special deals and bogofs
+    return Counter()
 
 def checkout(skus):
     if not isinstance(skus, str):
@@ -197,6 +199,7 @@ def checkout(skus):
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
