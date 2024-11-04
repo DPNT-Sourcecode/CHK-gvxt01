@@ -67,7 +67,3 @@ class TestCheckout():
             item='G'
         ) == Counter('FFFD')
 
-
-
-
-

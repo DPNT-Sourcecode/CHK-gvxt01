@@ -195,7 +195,18 @@ def checkout(skus):
             while groupDealComboExists:
                 print(f'Applying deal {groupDealCombo}')
                 total += groupDeal['price']
-                deductedItems
+                deductedItems = groupDeal['order']
+                deductedItemsIndex = 0
+                itemsRemoved = 0
+
+                while itemsRemoved < groupDeal['amount']:
+                    print(f'items removed: {itemsRemoved}')
+                    item_to_remove = deductedItems[deductedItemsIndex]
+                    print(f'item to remove of deal: {groupDealCombo} is {item_to_remove} from basket: {basket}')
+                    if basket[item_to_remove] > 0:
+                        numRemoved = min(basket[item_to_remove], groupDeal['amount'])
+                        itemsRemoved += numRemoved
+                        print(f'As part of deal {group}')
                 # basket.subtract(groupDealCombo)
                 # total += groupDeal['amount']
                 # diff = deepcopy(groupDealCombo)
@@ -243,14 +254,6 @@ def checkout(skus):
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
-
-
-
-
-
-
-
-
 
 
 
