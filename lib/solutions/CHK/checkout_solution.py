@@ -158,7 +158,9 @@ def checkout(skus):
 
     groupBuyDict = {
         'STXYZ' : {
-            
+            'combo': Counter('STXYZ'),
+            'amount': 3,
+            'price' : 45
         }
     }
 
@@ -178,6 +180,18 @@ def checkout(skus):
 
 
     for item in basket.keys():
+        
+        groupBuyDeal = [groupBuyDict[group] for group in groupBuyDict.keys() if item in group]
+        if len(groupBuyDeal) > 0:
+            # assume no conflicting group buys
+            print('Group deal identified')
+            groupDeal = groupBuyDeal[0]
+            print(groupDeal)
+            groupDealCombo = groupDeal['combo']
+            diff = deepcopy(groupDealCombo)
+            diff.subtract(basket)
+            
+
 
 
         bogofExists = bogofDict.get(item, None) != None
@@ -219,6 +233,7 @@ def checkout(skus):
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
