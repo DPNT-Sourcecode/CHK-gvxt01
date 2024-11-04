@@ -166,11 +166,9 @@ def checkout(skus):
         }
     }
 
-    if ',' in skus:
-        units = skus.split(',')
-    else:
+
         # This is for the case where the input is a series of letters in a word
-        units = list(skus)
+    units = list(skus)
 
     if len(set(units).difference(set(priceDict.keys()))) > 0:
         return -1
@@ -210,7 +208,7 @@ def checkout(skus):
                         basket.subtract({deductedItems[deductedItemsIndex]: numRemoved})
                     deductedItemsIndex += 1
 
-                    
+
                 print(f'Added val of {groupDeal['price']} for group deal: {groupDealCombo} basket now: {basket}')
                 groupDealComboExists = sum(basket[item] for item in groupDealCombo.keys()) > groupDeal['amount']
 
@@ -254,6 +252,7 @@ def checkout(skus):
             # total += inDeal * multiBuyDict[item][1] + extra * priceDict[item]
 
     return total
+
 
 
 
